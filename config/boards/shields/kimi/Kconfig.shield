@@ -1,2 +1,8 @@
 config KIMIBOARD
     def_bool $(shields_list_contains,kimiboard)
+
+config SHIELD_KIMIBOARD_DONGLE
+    def_bool $(shields_list_contains,kimiboard_dongle)
+
+config SHIELD_KIMIBOARD_PERIPHERAL
+    def_bool $(shields_list_contains,kimiboard_peripheral)

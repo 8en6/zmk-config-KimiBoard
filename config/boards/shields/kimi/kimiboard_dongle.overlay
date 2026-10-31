@@ -1,0 +1,24 @@
+#include "kimiboard-layout.dtsi"
+#include "kimiboard-split.dtsi"
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+
+/ {
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
+        input-processors = <&zip_temp_layer 2 700>;
+        scroll {
+            layers = <3>;
+            input-processors = <&zip_xy_to_scroll_mapper>,
+                               <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
+                               <&zip_scroll_scaler 1 20>;
+        };
+    };
+};

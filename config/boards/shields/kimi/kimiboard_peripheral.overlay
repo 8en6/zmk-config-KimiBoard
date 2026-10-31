@@ -1,0 +1,8 @@
+#include "kimiboard.overlay"
+#include "kimiboard-split.dtsi"
+
+/delete-node/ &{/trackball_listener};
+
+&trackball_split {
+    device = <&trackball>;
+};
