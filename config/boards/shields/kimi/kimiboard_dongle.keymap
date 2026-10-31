@@ -1,0 +1,50 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/pointing.h>
+
+/ {
+    behaviors {
+        bt_next: bt_next {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_tap &bt BT_NXT>;
+        };
+
+        sw1_tap: sw1_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&none>, <&bt_next>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Default";
+            // SW1: tap = next host BT profile; hold = no action.
+            // SW2, SW3, SW4 retain their physical numbering after rotation.
+            bindings = <&sw1_tap 0 0 &mkp LCLK &mkp RCLK &mkp LCLK>;
+        };
+
+        scroll_layer {
+            display-name = "Scroll";
+            bindings = <&trans &trans &trans &trans>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_scroll {
+            // Active while both SW2 and SW3 are held; release either to stop.
+            bindings = <&mo 1>;
+            key-positions = <1 2>;
+            timeout-ms = <50>;
+        };
+    };
+};
