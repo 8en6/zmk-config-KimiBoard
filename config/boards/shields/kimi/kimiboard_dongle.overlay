@@ -13,9 +13,8 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
-        input-processors = <&zip_temp_layer 2 700>;
         scroll {
-            layers = <3>;
+            layers = <1>;
             input-processors = <&zip_xy_to_scroll_mapper>,
                                <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
                                <&zip_scroll_scaler 1 20>;
