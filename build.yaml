@@ -8,11 +8,13 @@ include:
   - board: seeeduino_xiao_ble
     shield: kimiboard_dongle
     artifact-name: kimiboard-dongle-xiao
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/boards/shields/kimi/kimiboard_dongle.keymap
   - board: seeeduino_xiao_ble
     shield: kimiboard_peripheral
     artifact-name: kimiboard-lite-peripheral
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/boards/shields/kimi/kimiboard_peripheral.keymap
   - board: seeeduino_xiao_ble
     shield: kimiboard_dongle
     artifact-name: kimiboard-dongle-xiao-studio
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/boards/shields/kimi/kimiboard_dongle.keymap -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
